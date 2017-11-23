@@ -1,6 +1,6 @@
 //Obtener ancho y alto de la ventana
-var WIDTH = window.innerWidth;
-var HEIGHT = window.innerHeight;
+const WIDTH = window.innerWidth;
+const HEIGHT = window.innerHeight;
 
 var lienzo = new THREE.WebGLRenderer({antialias: true});
 
@@ -20,6 +20,17 @@ var materialP = new THREE.MeshLambertMaterial({color:0x004606});
 var cone = new THREE.Mesh(geometryCone, materialP);
 cone.position.set(0,0,0);
 
+//Esferas
+var geometrySphere = new THREE.SphereGeometry( 5, 32, 32 );
+var material = new THREE.MeshBasicMaterial( {color: 0xdf0d00} );
+var sphere = new THREE.Mesh( geometrySphere, material );
+sphere.position.set(0,0,0);
+
+//Estrella
+var starTexture = new THREE.ImageUtils.loadTexture("public/star.png");
+var geometryScuare = new THREE.Geometry();
+var scuareGeometry = new THREE.MeshBasicMaterial({geometryScuare, starTexture});
+scuareGeometry.position.set(0,0,0);
 
 // Generar cámara
 var camara = new THREE.PerspectiveCamera(
@@ -61,8 +72,9 @@ function renderizar(){
 	lienzo.render(scene, camara);
 	requestAnimationFrame(renderizar);
 }
-//Agregar a la escena la piramide
 scene.add(cone);
+scene.add(sphere);
+scene.add(scuareGeometry);
 //Llamar a la función
 renderizar();
 
