@@ -1,6 +1,6 @@
 //Obtener ancho y alto de la ventana
-var WIDTH = window.innerWidth - 5;
-var HEIGHT = window.innerHeight - 10;
+var WIDTH = window.innerWidth;
+var HEIGHT = window.innerHeight;
 
 var lienzo = new THREE.WebGLRenderer({antialias: true});
 
@@ -8,7 +8,7 @@ var lienzo = new THREE.WebGLRenderer({antialias: true});
 lienzo.setSize(WIDTH,HEIGHT);
 
 //Color de fondo para el lienzo
-lienzo.setClearColor (0xD0F4C7, 1);
+lienzo.setClearColor (0xffb891, 1);
 // Añadir lienzo a la página
 document.body.appendChild(lienzo.domElement);
 
