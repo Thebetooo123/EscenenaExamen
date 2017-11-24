@@ -14,23 +14,51 @@ document.body.appendChild(lienzo.domElement);
 
 var scene = new THREE.Scene;
 
+//Color aleatorio
+function generarcolor() {
+	long = 6;
+	var caracteres = "0123456789ABCDEF";
+	var color = "";
+	for (i = 0; i < long; i++) color += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+	color = "#" + color;
+	return color;
+}
 //Pino
-var geometryCone = new THREE.ConeGeometry( 40, 120, 4 );
-var materialP = new THREE.MeshLambertMaterial({color:0x004606});
+var geometryCone = new THREE.ConeGeometry( 20, 30, 4, 65 );
+var materialP = new THREE.MeshLambertMaterial({color: 0x01DF01}); 
 var cone = new THREE.Mesh(geometryCone, materialP);
-cone.position.set(0,0,0);
+cone.position.set(1,25,0);
+scene.add( cone );
+
+var geometryCone1 = new THREE.ConeGeometry( 30, 30, 4, 70 );
+var materialP = new THREE.MeshLambertMaterial({color: 0x01DF01}); 
+var cone1 = new THREE.Mesh(geometryCone1, materialP);
+cone1.position.set(1,8,0);
+scene.add( cone1 );
+
+var geometryCone2 = new THREE.ConeGeometry( 40, 30, 4, 70 );
+var materialP = new THREE.MeshLambertMaterial({color: 0x01DF01}); 
+var cone2 = new THREE.Mesh(geometryCone2, materialP);
+cone2.position.set(1,-10,0);
+scene.add( cone2 );
+
+var geometryCube = new THREE.CubeGeometry(15,25,15);
+var materialC = new THREE.MeshLambertMaterial({color:0x3B170B });
+var cube = new THREE.Mesh(geometryCube, materialC);
+cube.position.set(1,-25,0);
+scene.add( cube );
 
 //Esferas
-var geometrySphere = new THREE.SphereGeometry( 5, 32, 32 );
-var material = new THREE.MeshBasicMaterial( {color: 0xdf0d00} );
+var geometrySphere = new THREE.SphereGeometry( 2, 5, 2 );
+var material = new THREE.MeshBasicMaterial( {color:  generarcolor()} );
 var sphere = new THREE.Mesh( geometrySphere, material );
-sphere.position.set(0,0,0);
+sphere.position.set(12,10,10);
 
 //Estrella
 var starTexture = new THREE.ImageUtils.loadTexture("public/star.png");
 var geometryScuare = new THREE.Geometry();
 var scuareGeometry = new THREE.MeshBasicMaterial({geometryScuare, starTexture});
-scuareGeometry.position.set(0,0,0);
+//scuareGeometry.position.set(0,0,0);
 
 // Generar cámara
 var camara = new THREE.PerspectiveCamera(
@@ -67,8 +95,10 @@ let controls = new THREE.OrbitControls(camara, lienzo.domElement);
 
 function renderizar(){
 	//Rotar pirámide en eje z
-	cone.rotation.y +=.01;
-	
+	//cone.rotation.y +=.01;
+	//cone1.rotation.y +=.01;
+	//cone2.rotation.y +=.01;
+    //sphere.rotation.y +=.01;
 	lienzo.render(scene, camara);
 	requestAnimationFrame(renderizar);
 }
