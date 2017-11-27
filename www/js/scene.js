@@ -72,11 +72,6 @@ for (var i = 0; i <= 4; i++){
 //Estrella
 var starTexture = new THREE.ImageUtils.loadTexture("public/star.png");
 var squareGeometry = new THREE.Geometry();
-squareGeometry.vertices.push(new THREE.Vector3(-1, -1, 0));
-squareGeometry.vertices.push(new THREE.Vector3(1, -1, 0));
-squareGeometry.vertices.push(new THREE.Vector3(1, 1, 0));
-squareGeometry.vertices.push(new THREE.Vector3(-1, 1, 0));
-squareGeometry.faces.push(new THREE.Face4(0, 1, 2, 3));
 var scuareMaterial = new THREE.MeshBasicMaterial({map: starTexture});
 var scuareMesh = new THREE.Mesh(squareGeometry, scuareMaterial);
 scuareMesh.position.set(0.0, 0.0, 0.0);
